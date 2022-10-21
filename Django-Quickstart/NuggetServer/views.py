@@ -1,6 +1,42 @@
-from django.shortcuts import render, reverse
-from django.http import HttpResponseRedirect
+from django.shortcuts import render, redirect
+from .forms import NewUserForm
+from django.contrib.auth import authenticate, login, logout
+from django.contrib import messages
+from django.http import HttpResponseRedirect, HttpResponse
 from .models import MyModel
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+
+
+def register_request(request):
+	if request.method == "POST":
+		form = NewUserForm(request.POST)
+		if form.is_valid():
+			user = form.save()
+			login(request, user)
+			messages.success(request, "Registration successful." )
+			return redirect("NuggetServer:homepage")
+		messages.error(request, "Unsuccessful registration. Invalid information.")
+	form = NewUserForm()
+	return render (request=request, template_name="NuggetServer/register.html", context={"register_form":form})
+
+    
+
+
+
+
+@login_required
+
+
+# def myhomepage(request):
+#     print("home")
+
+# def myflash(request):
+#     print("flash")
+
+# def mydatabase(request):
+#     print("database")
+
 
 def myview(request):
     myinstances = MyModel.objects.all()

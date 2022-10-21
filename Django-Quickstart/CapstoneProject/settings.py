@@ -38,6 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'NuggetServer',
+<<<<<<< HEAD
+    'crispy_forms',
+=======
+>>>>>>> 7feadbb208b8299c6e9e19bc8ac14d51cd2087b8
 ]
 
 MIDDLEWARE = [
@@ -55,7 +59,11 @@ ROOT_URLCONF = 'CapstoneProject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+<<<<<<< HEAD
+        'DIRS': [BASE_DIR / "templates"],
+=======
         'DIRS': [],
+>>>>>>> 7feadbb208b8299c6e9e19bc8ac14d51cd2087b8
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -122,3 +130,14 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+<<<<<<< HEAD
+
+LOGIN_REDIRECT_URL = "/"
+
+# LOGIN_REDIRECT_URL = 'NuggetServer:login'
+LOGOUT_REDIRECT_URL = 'NuggetServer:logout' 
+LOGIN_URL = 'login' 
+
+STATICFILES_DIRS = [str(BASE_DIR.joinpath("static"))] 
+=======
+>>>>>>> 7feadbb208b8299c6e9e19bc8ac14d51cd2087b8
