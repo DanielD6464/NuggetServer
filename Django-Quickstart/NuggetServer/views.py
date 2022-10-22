@@ -22,21 +22,20 @@ def register_request(request):
 
     
 
-
+def landing(request):
+    return render(request, 'NuggetServer/landingpage.html')
 
 
 @login_required
 
+def myhomepage(request):
+    return render(request, 'NuggetServer/home.html')
 
-# def myhomepage(request):
-#     print("home")
+def flash(request):
+    return render(request, 'NuggetServer/flash.html')
 
-# def myflash(request):
-#     print("flash")
-
-# def mydatabase(request):
-#     print("database")
-
+def data(request):
+    return render(request, 'NuggetServer/database.html')
 
 def myview(request):
     myinstances = MyModel.objects.all()
