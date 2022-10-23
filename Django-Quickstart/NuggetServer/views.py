@@ -22,14 +22,29 @@ def register_request(request):
 
     
 
-def landing(request):
-    return render(request, 'NuggetServer/landingpage.html')
+def index(request):
+    return render(request, 'NuggetServer/index.html')
+
+def login(request):
+    return render(request, 'accounts/login.html')
 
 
 @login_required
 
-def myhomepage(request):
+def homepage(request):
     return render(request, 'NuggetServer/home.html')
+
+
+
+
+
+
+
+
+
+
+
+
 
 def flash(request):
     return render(request, 'NuggetServer/flash.html')
@@ -37,12 +52,6 @@ def flash(request):
 def data(request):
     return render(request, 'NuggetServer/database.html')
 
-def myview(request):
-    myinstances = MyModel.objects.all()
-    context = {
-        'myinstances': myinstances
-    }
-    return render(request, 'NuggetServer/mytemplate.html', context)
 
 def mycreate(request):
     myfield = request.POST['myfield']

@@ -3,9 +3,10 @@ from . import views
 
 app_name = 'NuggetServer'
 urlpatterns = [
-    path('', views.landing, name='land'),
+    path('', views.index, name="index"),
+    path('accounts/login/', views.index, name="index"),
     path('register/', views.register_request, name="register"),
-    path('home/', views.myhomepage, name='homepage'),
+    path('home/', views.homepage, name='homepage'),
     path('flash/', views.flash, name='FlashWifiNugget'),
     path('database/', views.data, name='MACDatabase'),
 ]

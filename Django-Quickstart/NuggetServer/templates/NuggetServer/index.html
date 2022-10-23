@@ -1,10 +1,22 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
     <head>
-        <meta charset="utf-8">
-        <title></title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'style.css'%}">
+        <title>Flash Page</title>
     </head>
     <body>
-        <h1>index</h1>
+
+        <div class="container">
+
+            <header>
+                <a href="/accounts/login/">Sign In</a>
+            </header>
+            <header>
+                <a href="{% url 'NuggetServer:register' %}">Register</a> 
+            </header>
+        </div>
+
+
     </body>
 </html>

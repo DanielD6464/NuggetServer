@@ -1,10 +1,35 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
     <head>
-        <meta charset="utf-8">
-        <title></title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'style.css'%}">
+        <title>Data Base</title>
+        
     </head>
     <body>
-        <h1>Database</h1>
+        <nav>
+            <a href=
+            "{% url 'NuggetServer:homepage' %}">
+                Home</a>  |
+            <a href=
+            "{% url 'NuggetServer:FlashWifiNugget' %}">
+                Flash Nugget</a> |
+            <a href=
+            "{% url 'NuggetServer:MACDatabase' %}">
+                Database</a> |
+            <a href=
+            "{% url 'NuggetServer:homepage' %}">
+                Log Out</a>
+        </nav>
+        <div class="container">
+            <header>
+                <h2 class="title">Data Base</h2>
+            </header>
+
+
+        <footer>
+            <p><a href="https://github.com/DanielD6464/NuggetServer">GitHub</a></p>
+        </footer> 
+
     </body>
 </html>
