@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+    <head>
+        {% load static %}
+        <link rel="stylesheet"  href="{% static '/style.css' %}">
+        <meta charset="UTF-8">
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <title>{{ title }}</title>
+    <head>
+
+<body>
+
+    <div class="top-bar">
+        <span>
+            <strong>Database</strong>
+        </span>
+        <ul>
+            <li><a href="#"><ion-icon name="logo-octocat"></ion-icon> NuggetServer | </a></li>
+            <li><a href="#"><ion-icon name="logo-octocat"></ion-icon> Wifi Nugget | </a></li>
+            <li><a href="#"><ion-icon name="globe-outline"></ion-icon> Wifi Flash Guide</a></li>
+        </ul>
+    </div>
+    
+    <nav>  
+        <div class="alibaba-logo">
+            <a href="#"></a><img src="{% static 'alibaba.png' %}" alt="alibaba"></a>
+        </div>
+        
+        <div class="toggle">
+            <a href="#"><ion-icon name="menu-outline"></ion-icon></a>
+        </div>
+        
+        <ul class="menu">
+            <li><a href="{% url 'NuggetServer:homepage' %}">Home</a></li>
+            <li><a href="{% url 'NuggetServer:FlashWifiNugget' %}">Flash</a></li>
+            <li><a href="{% url 'NuggetServer:MACDatabase' %}">Database</a></li>
+            <li><a href="{% url 'NuggetServer:homepage' %}">Log Out</a></li>
+        </ul>
+    </nav>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    
+    <script>
+        $(function(){
+            $(".toggle").on("click", function(){
+                    if($(".menu").hasClass("active")){
+                        $(".menu").removeClass("active");
+                        $(this).find("a").html("<ion-icon name='menu-outline'></ion-icon>");
+                    } else {
+                        $(".menu").addClass("active");
+                        $(this).find("a").html("<ion-icon name='close-outline'></ion-icon>");
+                    }
+                })
+            });    
+    </script>
+
+    {% block main %}
+    {% endblock %}
+
+</body>
+</html>
+
+ 
+       
+   
+            
+            
+        
+
+    
