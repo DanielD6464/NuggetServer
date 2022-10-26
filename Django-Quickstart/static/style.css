@@ -44,6 +44,10 @@ a, a:hover {
     color: rgb(121, 127, 132);
 }
 
+.username {
+    color: rgb(255, 0, 0);
+}
+
 nav {
     background: rgb(104, 89, 89);
     padding: 5pxx 20px;

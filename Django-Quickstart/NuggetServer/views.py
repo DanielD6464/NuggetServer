@@ -16,13 +16,13 @@ def register_request(request):
 			user = form.save()
 			login(request, user)
 			messages.success(request, "Registration successful." )
-			return redirect("NuggetServer:homepage")
+			return redirect("accounts/login.html")
 		messages.error(request, "Unsuccessful registration. Invalid information.")
 	form = NewUserForm()
 	return render (request=request, template_name="NuggetServer/register.html", context={"register_form":form})
 
 
-def login(request):
+def user_login(request):
     return render(request, 'accounts/login.html')
 
 @login_required

@@ -126,8 +126,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = "/home"
 
-# LOGIN_REDIRECT_URL = 'NuggetServer:login'
-LOGOUT_REDIRECT_URL = 'NuggetServer:logout' 
+# LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = '/accounts/login'
 LOGIN_URL = 'login' 
 
 STATICFILES_DIRS = [str(BASE_DIR.joinpath("static"))] 
