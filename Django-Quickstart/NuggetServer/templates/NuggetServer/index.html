@@ -1,22 +1,12 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-    <head>
-        {% load static %}
-        <link rel="stylesheet" href="{% static 'style.css'%}">
-        <title>Flash Page</title>
-    </head>
-    <body>
-
-        <div class="container">
-
-            <header>
-                <a href="/accounts/login/">Sign In</a>
-            </header>
-            <header>
-                <a href="{% url 'NuggetServer:register' %}">Register</a> 
-            </header>
-        </div>
+{% extends 'NuggetServer/base.html' %}
 
 
-    </body>
-</html>
+
+
+<h1>{% block title %}Nugget Server- Home{% endblock %}</h1>
+
+{% block content %}
+
+
+    
+{% endblock %}

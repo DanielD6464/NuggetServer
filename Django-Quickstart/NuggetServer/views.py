@@ -12,26 +12,28 @@ import requests
 def register_request(request):
 	if request.method == "POST":
 		form = NewUserForm(request.POST)
+		print("form", form)
+		form.cleaned_data['username']
+		form.cleaned_data['email']
+		form.cleaned_data['password1']
 		if form.is_valid():
 			user = form.save()
 			login(request, user)
 			messages.success(request, "Registration successful." )
-			return redirect("accounts/login.html")
+			return redirect("NuggetServer/index.html")
 		messages.error(request, "Unsuccessful registration. Invalid information.")
 	form = NewUserForm()
 	return render (request=request, template_name="NuggetServer/register.html", context={"register_form":form})
 
 
-def user_login(request):
-    return render(request, 'accounts/login.html')
 
 @login_required
 
 def index(request):
     return render(request, 'NuggetServer/index.html')
 
-def homepage(request):
-    return render(request, 'NuggetServer/home.html')
+# def homepage(request):
+#     return render(request, 'NuggetServer/home.html')
 
 def database(request):
 	response=request.get('https://api.macvendors.com/FC-A1-3E-2A-1C-33').json()
