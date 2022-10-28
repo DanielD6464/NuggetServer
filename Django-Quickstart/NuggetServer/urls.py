@@ -1,10 +1,10 @@
-from django.urls import path
+from django.urls import path, include
 from . import views
 
 app_name = 'NuggetServer'
 urlpatterns = [
     path('register/', views.register_request, name="register"),
-    # path('home/', views.myhomepage, name='homepage'),
-    path('flash/', views.mycreate, name='FlashWifiNugget'),
-    path('database/', views.mycreate, name='MACDatabase'),
+    path('home/', views.index, name='homepage'),
+    path('flash/', views.flash, name='FlashWifiNugget'),
+    path('database/', views.data, name='MACDatabase'),
 ]

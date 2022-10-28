@@ -6,6 +6,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from .models import MyModel
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+import requests
 
 
 def register_request(request):
@@ -17,33 +18,40 @@ def register_request(request):
 			messages.success(request, "Registration successful." )
 			return redirect("NuggetServer:homepage")
 		messages.error(request, "Unsuccessful registration. Invalid information.")
-	form = NewUserForm()
-	return render (request=request, template_name="NuggetServer/register.html", context={"register_form":form})
+	else:
+		form = NewUserForm()
+	return render(request, template_name="NuggetServer/register.html", context={"register_form":form})
 
-    
 
 
 
 
 @login_required
 
+def index(request):
+    return render(request, 'NuggetServer/index.html')
 
-# def myhomepage(request):
-#     print("home")
-
-# def myflash(request):
-#     print("flash")
-
-# def mydatabase(request):
-#     print("database")
+def database(request):
+	response=request.get('https://api.macvendors.com/FC-A1-3E-2A-1C-33').json()
+	return render(request, database, {'response', response})
 
 
-def myview(request):
-    myinstances = MyModel.objects.all()
-    context = {
-        'myinstances': myinstances
-    }
-    return render(request, 'NuggetServer/mytemplate.html', context)
+
+
+
+
+
+
+
+
+
+
+def flash(request):
+    return render(request, 'NuggetServer/flash.html')
+
+def data(request):
+    return render(request, 'NuggetServer/database.html')
+
 
 def mycreate(request):
     myfield = request.POST['myfield']
