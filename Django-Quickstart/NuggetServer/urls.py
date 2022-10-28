@@ -6,5 +6,5 @@ urlpatterns = [
     path('register/', views.register_request, name="register"),
     path('home/', views.index, name='homepage'),
     path('flash/', views.flash, name='FlashWifiNugget'),
-    path('database/', views.data, name='MACDatabase'),
+    path('database/', views.mac_database, name='MACDatabase'),
 ]
