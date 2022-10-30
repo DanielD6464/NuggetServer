@@ -68,8 +68,3 @@ def data(request):
     return render(request, 'NuggetServer/database.html')
 
 
-# def mycreate(request):
-#     myfield = request.POST['myfield']
-#     mymodel = MyModel(myfield=myfield)
-#     mymodel.save()
-#     return HttpResponseRedirect(reverse('NuggetServer:myview'))
