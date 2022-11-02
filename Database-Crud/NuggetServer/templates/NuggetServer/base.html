@@ -6,11 +6,17 @@
         <link rel="stylesheet"  href="{% static '/style.css' %}">
         <meta charset="UTF-8">
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        </script>
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+        <script src="https://unpkg.com/vue@2"></script>
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <head>
 
 <body>
 
     <div class="top-bar">
+    
         <span>
             <h2>{% block title %}{% endblock %}</h2>
         </span>
@@ -20,28 +26,31 @@
             <li><a href="https://github.com/HakCat-Tech/WiFi-Nugget/wiki/WiFi-Nugget-Flashing-Guide"><ion-icon name="globe-outline"></ion-icon> Wifi Flash Guide</a></li>
             <li></li>
         </ul>
-        
+        <div class="username">
             <p>Hello {{ user.username }}!</p>
+        </div>
         
     </div>
     
-    <nav>  
-        <div class="alibaba-logo">
-            <a href="#"></a><img src="{% static 'alibaba.png' %}" alt="alibaba"></a>
-        </div>
-        
-        <div class="toggle">
-            <a href="#"><ion-icon name="menu-outline"></ion-icon></a>
-        </div>
-        
-        <ul class="menu">
-            <li><a href="{% url 'NuggetServer:homepage' %}">Home</a></li>
-            <li><a href="{% url 'NuggetServer:FlashWifiNugget' %}">Flash</a></li>
-            <li><a href="{% url 'NuggetServer:MACDatabase' %}">Database</a></li>
-            <li><a href="{% url 'logout' %}">Log Out</a></li>
-        </ul>
-    </nav>
+        <nav>
+            <div class="alibaba-logo">
+                <a href="#"></a><img src="{% static 'alibaba.png' %}" alt="alibaba"></a>
+            </div>
+            
+            <div class="toggle">
+                <a href="#"><ion-icon name="menu-outline"></ion-icon></a>
+            </div>
+            
+            <ul class="menu">
+                <li><a href="{% url 'NuggetServer:homepage' %}">Home</a></li>
+                <li><a href="{% url 'NuggetServer:FlashWifiNugget' %}">Flash</a></li>
+                <li><a href="{% url 'NuggetServer:MACDatabase' %}">Database</a></li>
+                <li><a href="{% url 'logout' %}">Log Out</a></li>
+            </ul>
+        </nav>
     
+
+        
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     
     <script>
@@ -58,9 +67,11 @@
             });    
     </script>
 
-    {% block content %}
-    {% endblock %}
 
+        {% block content %}
+        {% endblock %}
+
+    
 </body>
 </html>
 

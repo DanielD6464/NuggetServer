@@ -45,12 +45,17 @@ a, a:hover {
 }
 
 .username {
-    color: rgb(255, 0, 0);
+    color: rgb(255, 56, 56);
+}
+
+.nav-bar {
+    font-size: 20px;
+    display: flex;
 }
 
 nav {
     background: rgb(104, 89, 89);
-    padding: 5pxx 20px;
+    padding: 15px 20px;
     display: flex;
     align-items: center;
 }
@@ -100,6 +105,9 @@ nav a:hover {
     display: none;
 }
 
+.app {
+    background-color: #000000;
+}
 
 
 @media screen and (max-width: 600px) {
