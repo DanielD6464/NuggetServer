@@ -1,0 +1,183 @@
+{% extends 'NuggetServer/base.html' %}
+
+
+
+<h1>{% block title %}Nugget Server- Database{% endblock %}</h1>
+
+
+
+
+{% block content %}
+<div id="app">
+    <div class="container">
+        <div class="container">
+            <div class="container">
+                <div class="row mt-2">
+                    <div class="col-lg-6">
+                        <h3 class="text-info">Enter Data</h3>
+                    </div>
+                </div>
+            </div>
+
+            <form action="{% url 'NuggetServer:MACDatabase' %}" method="POST">
+                <input v-model="mac" placeholder="MAC Address" name="macaddr">
+                <input v-model="ip" placeholder="IP Address" name="ipaddr" >
+                <button class="btn btn-info float-right"><ion-icon name="enter-outline"></ion-icon>Submit</button>
+                {% csrf_token %}
+            </form>
+        </div>
+                <hr class="bg-info">
+                <!-- <div class="alert alert-danger" v-if="seen" id="hide">
+                   <p> ~ Error Message ~ </p>
+                </div> -->
+                <!-- <div class="alert alert-success" v-if="!isHidden">
+                    ~Success Message ~
+                </div> -->
+
+    </div>
+
+                <!-- Display Records -->
+                {% for vendor in vendors %}
+                <div class="row">
+                    <div class="col-lg-12">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr class="text-center bg-info text-light">
+                                    <th>IP</th>
+                                    <th>MAC</th>
+                                    <th>Vendor</th>
+                                    <th>Edit</th>
+                                    <th>Delete</th>
+                                </tr>
+                            </thead>
+                        </div>
+                    <div>
+
+                            <tbody>
+                                <tr class="text-center">
+                                    <td>{{ vendor.ip_addr }}</td>
+                                    <td>{{ vendor.mac_addr }}</td>
+                                    <td>{{ vendor.vendor_name }}</td>
+                                    <td><a href="#" class="text-secondary" v-on:click="isHidden = !isHidden"><ion-icon name="create-outline"></ion-icon></a></td>
+                                    <td><a href="#" class="text-danger" v-on:click="isHidden = !isHidden" v-on:click="deleteData()"><ion-icon name="trash-outline"></ion-icon></a></td>
+                                </tbody>
+                                </tr>
+                                
+                                
+                        </table>
+                    </div>
+                </div>
+            {% endfor %}
+                    
+            <!-- =============================================== -->
+            <!-- Edit Button
+            <div id="overlay" v-if="!isHidden">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Edit Data</h5>
+                            <button type="button" class="close">
+                            </button>
+                            {% csrf_token %}
+                        </div>
+                        <div class="modal-body p-4">
+                            <form action="#" method="post">
+                                <div class="form-group">
+                                    <input type="text" name="IP"class="form-control form-control-lg" placeholder="IP">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="MAC"class="form-control form-control-lg" placeholder="MAC">
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn btn-info btn-block btn-lg"
+                                        @click="showEditModal=false">Update Data
+                                    </button>
+                                    {% csrf_token %}
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            <!-- ===============================================  -->
+            <!-- Delete Button -->
+            <!-- <div id="overlay" v-if="!isHidden">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Delete Data</h5>
+                            <button type="button" class="close" v-on:click="showDeleteModal=true">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            {% csrf_token %}
+                        </div>
+                        <div class="modal-body p-4">
+                            <h4 class="text-danger">Are you sure?</h4>
+                            <hr>
+                            <button class="btn btn-danger btn-lg" v-on:click="showDeleteModal=false">Yes</button>
+                            {% csrf_token %}
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <button class="btn btn-success btn-lg" v-on:click="showDeleteModal=false">No</button>
+                            {% csrf_token %}
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            <!-- ===============================================  -->
+</div>
+
+
+
+<script>
+    const app = new Vue({
+        el: '#app',
+        delimiters: ['${' , '}'],
+        data: {
+            Vendors: [],
+            errorMsg: false,
+            successMsg: false,
+            showEditModal: false,
+            showDeleteModal: false,
+            isHidden: false,
+        },
+        methods: {
+            displayVendor: function() {
+                axios({
+                    method: 'get',
+                    url: 'https://api.macvendors.com/'
+                 }).then((response) => {
+                     this.mac_database = JSON.parse(response.data)
+                    console.log(this.mac_database)
+                    console.log(response.data)
+                    })
+            },
+            // toggleShow: function() {
+            //     this.isHidden = !this.isHidden
+            //     console.log(this.isHidden)
+            //     console.log(!this.isHidden)
+            // },
+            // deleteData: function() {
+            //     Vue.delete(app.Vendors)
+            //     console.log(response.data)
+            // }, 
+            // editData: function() {
+            //     //
+            // }    
+        },
+        created: function() {
+            this.displayVendor()
+    }
+    
+    }
+    )
+    
+</script>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+<script src="https://unpkg.com/vue@2"></script>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+
+{% endblock %}
+
