@@ -109,6 +109,9 @@ nav a:hover {
     background-color: #000000;
 }
 
+.about-title {
+    background-color: #000000;
+}
 
 @media screen and (max-width: 600px) {
     nav {
