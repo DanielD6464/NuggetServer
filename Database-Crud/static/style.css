@@ -54,7 +54,7 @@ a, a:hover {
 }
 
 nav {
-    background: rgb(104, 89, 89);
+    background: rgb(86, 84, 84);
     padding: 15px 20px;
     display: flex;
     align-items: center;
@@ -109,7 +109,38 @@ nav a:hover {
     background-color: #000000;
 }
 
+.text-primary {
+    text-align: center;
+}
 
+#title_home {
+    background-color: #000000;
+    width: 100%;
+    text-align: center;
+
+}
+
+#about {
+    background-color: rgb(86, 84, 84);
+    text-align: center;
+    display: flex;
+
+}
+
+#background-color {
+    background-color: rgb(0, 0, 0);
+    height: 100vh;
+}
+
+#home_page_container {
+    justify-content: space-around;
+    height: max-content;
+}
+
+#data-table {
+    color: #fff;
+
+}
 @media screen and (max-width: 600px) {
     nav {
         display: block;

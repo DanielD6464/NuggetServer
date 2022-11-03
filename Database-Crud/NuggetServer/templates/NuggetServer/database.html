@@ -42,7 +42,7 @@
                     <div class="col-lg-12">
                         <table class="table table-bordered table-striped">
                             <thead>
-                                <tr class="text-center bg-info text-light">
+                                <tr class="text-center bg-secondary text-dark">
                                     <th>IP</th>
                                     <th>MAC</th>
                                     <th>Vendor</th>
@@ -55,9 +55,9 @@
 
                             <tbody>
                                 <tr class="text-center">
-                                    <td>{{ vendor.ip_addr }}</td>
-                                    <td>{{ vendor.mac_addr }}</td>
-                                    <td>{{ vendor.vendor_name }}</td>
+                                    <td class="text-primary">{{ vendor.ip_addr }}</td>
+                                    <td class="text-primary">{{ vendor.mac_addr }}</td>
+                                    <td class="text-primary">{{ vendor.vendor_name }}</td>
                                     <td><a href="#" class="text-secondary" v-on:click="isHidden = !isHidden"><ion-icon name="create-outline"></ion-icon></a></td>
                                     <td><a href="#" class="text-danger" v-on:click="isHidden = !isHidden" v-on:click="deleteData()"><ion-icon name="trash-outline"></ion-icon></a></td>
                                 </tbody>

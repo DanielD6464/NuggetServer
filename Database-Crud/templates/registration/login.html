@@ -6,7 +6,9 @@
 <h1>{% block title %}Nugget Server- Login{% endblock %}</h1>
 
 {% block content %}
-
+<html>
+<body>
+<div class="text-primary">
 <h2>Log In</h2>
 <form method="post">
   {% csrf_token %}
@@ -14,6 +16,8 @@
   <button type="submit">Log In</button>
 </form>
 <p class="text-center">If you don't have an account, register <a href="{% url 'NuggetServer:register' %}">here</a>.</p>
+
+</div>
 </body>
 </html>
     
